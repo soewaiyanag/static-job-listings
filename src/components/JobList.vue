@@ -19,6 +19,6 @@ onMounted(fetchJobs); // Call the fetchJobs function on component mount
 
 <template>
   <div class="grid gap-14">
-    <JobListItem v-for="job in jobs" :job="job" key="job.id" />
+    <JobListItem v-for="job in jobs" :job="job" :key="job.id" />
   </div>
 </template>

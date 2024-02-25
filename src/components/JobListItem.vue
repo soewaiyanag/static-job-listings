@@ -3,10 +3,10 @@ import { ref, computed } from "vue";
 
 const { job } = defineProps(["job"]);
 
-const allFilters = computed(() => {
-  const filters = [job.role, job.level, ...job.languages, ...job.tools];
+const tags = computed(() => {
+  const tags = [job.role, job.level, ...job.languages, ...job.tools];
   // Filter out any null or undefined values
-  return filters.filter((filter) => filter);
+  return tags.filter((filter) => filter);
 });
 </script>
 
@@ -35,7 +35,11 @@ const allFilters = computed(() => {
             >
           </div>
         </div>
-        <h3 class="font-semibold">{{ job.position }}</h3>
+        <h3
+          class="cursor-pointer font-semibold transition-colors hover:text-primary"
+        >
+          {{ job.position }}
+        </h3>
         <div class="flex gap-2 text-gray-400">
           <span>{{ job.postedAt }}</span>
           •
@@ -46,11 +50,11 @@ const allFilters = computed(() => {
       </div>
       <div class="flex flex-wrap gap-4 pt-4">
         <button
-          v-for="filter in allFilters"
-          :key="filter"
-          class="rounded bg-light-grayish-cyan-1 p-2 font-semibold text-primary"
+          v-for="tag in tags"
+          :key="job.id + tag"
+          class="rounded bg-light-grayish-cyan-1 p-2 font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
         >
-          {{ filter }}
+          {{ tag }}
         </button>
       </div>
     </div>
