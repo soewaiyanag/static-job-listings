@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-league-spartan bg-light-grayish-cyan-1;
+  }
+}
+
 @layer utilities {
   .font-league-spartan {
     font-family: "League Spartan", sans-serif;
